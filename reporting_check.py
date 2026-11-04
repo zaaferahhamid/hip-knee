@@ -7,7 +7,7 @@ df["has_rate"] = df["Score"].notna()
 
 # 1. Which footnotes go with hospitals that have / lack a rate?
 print("Footnote vs. whether a rate was reported:")
-print(pd.crosstab(df["Footnote"].fillna("none"), df["has_rate"]))
+print(pd.crosstab(df["Footnote"].astype("string").fillna("none"), df["has_rate"]))
 
 # 2. State level: does the share of reporting hospitals relate to the rate?
 rated = df[df["has_rate"]].copy()
