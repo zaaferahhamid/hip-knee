@@ -25,3 +25,4 @@ for csv_file in sorted(data_folder.glob("*.csv")): # finds every file ending in 
     print("\nMissing values per column:")
     print(df.isna().sum()) # counts empty cells in each col
 
+# explore.py is for the first look of the data
