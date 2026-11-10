@@ -2,7 +2,9 @@
 
 An analysis of public CMS hospital data asking one question: **how much weight should anyone give to a single hospital's published hip/knee replacement complication rate, given how many cases it is based on?**
 
-**Status:** In progress. Data cleaning and the statistical analysis are done. The interactive app, tests, and methodology confirmation are next.
+**Status:** Deployed. Unit tests and CMS methodology confirmation are next.
+
+**[Try the live app](https://hip-knee-rate-reliability.streamlit.app/)**
 
 ![Funnel plot of hip/knee complication rates](outputs/funnel_plot.png)
 
