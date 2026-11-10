@@ -5,6 +5,16 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+import re
+
+def tidy(text):
+    """Title-case a name, but keep ordinals like 60th in lowercase."""
+    return re.sub(
+        r"(\d)(St|Nd|Rd|Th)\b",
+        lambda m: m.group(1) + m.group(2).lower(),
+        str(text).title(),
+    )
+
 DATA_FILE = Path(__file__).parent / "data" / "processed" / "hip_knee_hospital.csv"
 FUNNEL_IMAGE = Path(__file__).parent / "outputs" / "funnel_plot.png"
 SIZE_LABELS = ["Smallest", "Small-mid", "Large-mid", "Largest"]
@@ -24,9 +34,9 @@ def load_data():
 
     # A readable label for the hospital drop-down.
     df["label"] = (
-        df["Facility Name"].str.title()
+        df["Facility Name"].map(tidy)
         + " - "
-        + df["City/Town"].str.title()
+        + df["City/Town"].map(tidy)
         + ", "
         + df["State"]
         + " ("
@@ -277,4 +287,3 @@ else:
         render_reliability(rated, pooled, summary)
     with tab_about:
         render_about(df, rated, period)
-        
